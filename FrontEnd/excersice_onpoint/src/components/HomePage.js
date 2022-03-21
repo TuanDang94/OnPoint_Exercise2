@@ -1,15 +1,14 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useRef } from "react";
 import axios from "axios";
 import BootstrapTable from "react-bootstrap-table-next";
 import paginationFactory from "react-bootstrap-table2-paginator";
 import ReactLoading from "react-loading";
-import * as ReactBootStrap from "react-bootstrap";
 
 const HomePage = () => {
-  const [url, setUrl] = useState();
+  const [url, setUrl] = useState("");
   // const [players, setPlayer] = useState([]);
   const [movies, setMovie] = useState([]);
-  const [done, setDone] = useState(undefined);
+  const [done, setDone] = useState(true);
   const inputFile = useRef(null);
   const linkRoot = "http://localhost:4000/api/getcategories?url=";
 
@@ -38,7 +37,12 @@ const HomePage = () => {
         return (
           <>
             {cell.map((label) => (
-              <img src={label} key={label} style={{ maxWidth: "60%" }}></img>
+              <img
+                src={label}
+                key={label}
+                alt=""
+                style={{ maxWidth: "60%" }}
+              ></img>
             ))}
           </>
         );
@@ -85,14 +89,28 @@ const HomePage = () => {
     };
   };
 
-  useEffect(() => {
-    setDone(true);
-  }, []);
-
   const pagination = paginationFactory({
     sizePerPage: 20,
     showTotal: true,
     alwaysShowAllBtns: true,
+    sizePerPageList: [
+      {
+        text: "5",
+        value: 5,
+      },
+      {
+        text: "10",
+        value: 10,
+      },
+      {
+        text: "15",
+        value: 15,
+      },
+      {
+        text: "20",
+        value: 20,
+      },
+    ],
   });
 
   const exportFile2JSon = () => {
