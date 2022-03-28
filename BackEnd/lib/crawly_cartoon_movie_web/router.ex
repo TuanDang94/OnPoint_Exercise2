@@ -11,6 +11,7 @@ defmodule CrawlyCartoonMovieWeb.Router do
   end
 
   pipeline :api do
+    plug CORSPlug
     plug(:accepts, ["json"])
   end
 
@@ -24,6 +25,16 @@ defmodule CrawlyCartoonMovieWeb.Router do
     pipe_through(:api)
 
     get "/getcategories", MovieController, :getcategories
+
+    post "/importmovie", MovieController, :importmovie
+
+    get "/gettotalcountmovie", MovieController, :gettotalcountmovie
+
+    get "/importbylink", MovieController, :importbylink
+
+    get "/getall", MovieController, :getall
+
+    get "/getmoviebypageandfilter", MovieController, :getmoviebypageandfilter
   end
 
   # Other scopes may use custom stacks.

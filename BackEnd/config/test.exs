@@ -7,7 +7,7 @@ import Config
 # Run `mix help test` for more information.
 config :crawly_cartoon_movie, CrawlyCartoonMovie.Repo,
   username: "postgres",
-  password: "postgres",
+  password: "Abcd1234",
   hostname: "localhost",
   database: "crawly_cartoon_movie_test#{System.get_env("MIX_TEST_PARTITION")}",
   pool: Ecto.Adapters.SQL.Sandbox,

@@ -1,6 +1,6 @@
 defmodule CrawlyCartoonMovieWeb.Endpoint do
   use Phoenix.Endpoint, otp_app: :crawly_cartoon_movie
-  plug CORSPlug
+
   # The session will be stored in the cookie and signed,
   # this means its contents can be read but not tampered with.
   # Set :encryption_salt if you would also like to encrypt it.
@@ -46,5 +46,6 @@ defmodule CrawlyCartoonMovieWeb.Endpoint do
   plug Plug.MethodOverride
   plug Plug.Head
   plug Plug.Session, @session_options
+  plug CORSPlug
   plug CrawlyCartoonMovieWeb.Router
 end
